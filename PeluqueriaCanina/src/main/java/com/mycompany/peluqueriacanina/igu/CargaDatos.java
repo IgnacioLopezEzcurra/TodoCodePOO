@@ -1,8 +1,14 @@
 
 package com.mycompany.peluqueriacanina.igu;
 
+import com.mycompany.peluqueriacanina.logica.Controladora;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 
 public class CargaDatos extends javax.swing.JFrame {
+    
+    Controladora control = new Controladora();
 
     public CargaDatos() {
         initComponents();
@@ -271,7 +277,26 @@ public class CargaDatos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCelDuenioActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        
+        String nombreMasco = txtNombre.getText();
+        String raza = txtRaza.getText();
+        String color = txtColor.getText();
+        String observaciones = txtObservaciones.getText();
+        String alergico = (String) cmbAlergico.getSelectedItem();
+        String atenEsp = (String) cmbAtEsp.getSelectedItem();
+        
+        String nombreDuenio = txtNombreDuenio.getText();
+        String celDuenio = txtCelDuenio.getText();
+        
+        control.guardar(nombreMasco, raza, color, observaciones,
+                alergico, atenEsp, nombreDuenio, celDuenio);
+        
+        JOptionPane optionPane = new JOptionPane("Se guardó correctamente");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Guardado exitoso");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
