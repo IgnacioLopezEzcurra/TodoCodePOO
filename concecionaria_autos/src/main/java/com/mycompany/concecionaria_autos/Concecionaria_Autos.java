@@ -1,0 +1,17 @@
+
+package com.mycompany.concecionaria_autos;
+
+import com.mycompany.concecionaria_autos.igu.Principal;
+
+
+public class Concecionaria_Autos {
+
+    public static void main(String[] args) {
+        
+        Principal princ = new Principal();
+        princ.setVisible(true);
+        princ.setLocationRelativeTo(null);
+        
+    }
+    
+}
