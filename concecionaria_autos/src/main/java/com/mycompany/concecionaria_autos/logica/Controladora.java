@@ -2,6 +2,7 @@
 package com.mycompany.concecionaria_autos.logica;
 
 import com.mycompany.concecionaria_autos.persistencia.ControladoraPersistencia;
+import java.util.List;
 
 
 public class Controladora {
@@ -21,6 +22,12 @@ public class Controladora {
         auto.setCantPuertas(cantPuertas);
         
         controlPersis.agregarAutomovil(auto);
+        
+    }
+
+    public List<Automovil> traerAutos() {
+        
+        return controlPersis.traerAutos();
         
     }
     
