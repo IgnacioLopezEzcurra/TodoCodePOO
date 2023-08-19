@@ -2,7 +2,10 @@
 package com.mycompany.concecionaria_autos.persistencia;
 
 import com.mycompany.concecionaria_autos.logica.Automovil;
+import com.mycompany.concecionaria_autos.persistencia.exceptions.NonexistentEntityException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class ControladoraPersistencia {
@@ -15,6 +18,28 @@ public class ControladoraPersistencia {
 
     public List<Automovil> traerAutos() {     
         return autoJpa.findAutomovilEntities();
+    }
+
+    public void borrarAuto(int idAuto) {
+        try {
+            autoJpa.destroy(idAuto);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
+
+    public Automovil traerAutos(int idAuto) {
+        return autoJpa.findAutomovil(idAuto);
+    }
+
+    public void modificarAuto(Automovil auto) {
+        try {
+            autoJpa.edit(auto);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
